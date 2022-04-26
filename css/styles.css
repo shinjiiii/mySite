@@ -1,0 +1,271 @@
+/* common */
+
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* bodyにはデフォルトでmarginがついている */
+
+h1,
+h2{
+  margin: 0;
+  font-weight: normal;
+}
+
+.container{
+  margin: 0 16px;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ;
+}
+
+a:hover{
+  opacity: 0.5;
+}
+
+p{
+  margin: 0;
+}
+
+/* header */
+
+header{
+  padding: 8px 0;
+}
+
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header form{
+  display: none;
+}
+
+header ul{
+  display: flex;
+}
+
+header li a{
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  transition-property: opacity;
+  transition-duration: 1s;
+}
+
+header li a:hover{
+  opacity: 0.5;
+}
+
+header li a i{
+  font-size: 18px;
+}
+
+header li + li{
+  margin-left: 8px;
+}
+
+header input,
+header button{
+  all: unset;  /*全てのスタイルをリセット*/
+}
+
+header input{
+  border-bottom: 2px solid #4c4948;
+  width: 300px;
+  padding: 2px;
+}
+
+header button{
+  cursor: pointer;
+}
+
+/* hero */
+
+.hero{
+  height: 400px;
+}
+/* 画像が絶対配置されて通常の配置フローから外れたので、次にくる要素を押し下げるためにheightを指定する */
+
+.hero .container{
+  overflow: hidden;
+  position: relative;
+}
+
+.hero ul{
+  display: flex;
+  transition: transform .3s;
+}
+
+.hero li{
+  height: 100%;
+  min-width: 100%;
+}
+
+.hero img{
+  object-fit: cover;  /*縦横比が崩れてしまった時はobject-fitプロパティを使う*/
+  /* opacity: 0; */
+  transition: opacity .5s;
+  width: 100%;
+  height: 400px;
+}
+
+.hero #prev,
+.hero #next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 24px;
+  padding: 0 8px 4px;
+  cursor: pointer;
+}
+
+.hero #prev:hover,
+.hero #next:hover{
+  opacity: 0.8;
+}
+
+.hero #prev{
+  left: 0px;
+}
+
+.hero #next{
+  right: 0;
+}
+
+.hero .hidden{
+  display: none;
+}
+
+.hero nav{
+  margin-top: 16px;
+  text-align: center;
+}
+
+.hero button + button{
+  margin-left: 8px;
+}
+
+.hero nav button{
+  border: none;
+  width: 16px;
+  height: 16px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hero nav .current {
+  background: #999;
+}
+
+/* products */
+
+.products{
+  padding: 80px 0;
+}
+
+.products ul{
+  display: flex;
+  flex-wrap: wrap;  /*並べたい要素の幅がコンテナの幅を超えるときに折り返す*/
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.products li{
+  width: calc((100% - 16px) / 2);
+}
+
+.products li img{
+  width: 100%;
+}
+
+.products li h2{
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.products li a{
+  display: block;  /*a要素はinlineだが、h2やpはblockなので揃える*/
+  transition: opacity 0.3s;
+}
+
+.products li a:hover{
+  opacity: 0.5;
+}
+
+.products .more{
+  display: block;  /*クリックできる領域ごと広げたい*/
+  width: 70%;
+  line-height: 48px;
+  border: 2px solid black;
+  text-align: center;
+  margin: 32px auto 0px;
+}
+
+
+/* footer */
+
+footer{
+  background: #4c4948;
+  padding: 16px 0;
+  color: #eee;
+  font-size: 16px;
+}
+
+footer .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer i{
+  font-size: 24px;
+}
+
+footer ul{
+  display: flex;
+}
+
+footer li + li{
+  margin-left: 8px;
+}
+
+
+/* medium screen */
+
+@media(min-width: 600px){
+  .products li{
+    width: calc((100% - 32px) / 3);
+  }
+}
+
+
+/* large screen */
+
+@media(min-width: 800px){
+  .container{
+    margin: 0 auto;
+    width: calc(800px - 32px);
+  }
+  header form{
+    display: block;
+  }
+}
